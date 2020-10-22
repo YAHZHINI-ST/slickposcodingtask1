@@ -1,0 +1,66 @@
+//owner Signup Page
+void ownersignup()
+{
+    printf("\n\t\t\tWELCOME TO owner SIGNUP\t");
+     int flag=0,m,index=0;
+     char pass[20],c;
+     FILE *fa;
+    printf("\n\t\tUserID:\t");
+    scanf("%d",&a1.ownerid);
+            fa=fopen("owner.dat","r");
+while(fscanf(fa,"%d %s\n",&a2.ownerid,a2.pass)!=EOF)
+   {
+       if(a1.ownerid==a2.ownerid)
+       {
+        flag=1;
+         printf("\n\t\tEnter another owner ID\n");
+           ownersignup();
+        }
+       }
+
+
+
+    if(flag==0)
+   {
+
+        fa=fopen("owner.dat","a+");
+        fprintf(fa,"%d\t",a1.ownerid);
+    printf("\t\tPassword:\t");
+        //scanf("%s",a1.pass);
+                    while((c = getch()) != 13){
+       if(index < 0)
+           index = 0;
+
+       if(c == 8){
+           putch('\b');
+           putch(NULL);
+           putch('\b');
+           index--;
+       continue;
+       }
+       pass[index++] = c;
+       putch('*');
+   }
+   pass[index] = '\0';
+   strcpy(a1.pass,pass);
+            fprintf(fa,"%s\n",a1.pass);
+printf("\n\t\tEnter 1.login \t2.Exit\t");
+scanf("%d",&m);
+fclose(fa);
+    switch(m)
+    {   case 1:
+            ownerlogin();
+            break;
+        case 2:
+            exit(0);
+            break;
+        default:
+            {
+                printf("\n\t\tEnter 1 or 3");
+                main();
+                break;
+            }
+   }
+
+}
+}

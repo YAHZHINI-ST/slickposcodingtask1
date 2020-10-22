@@ -1,0 +1,56 @@
+//employee Login Page.
+void login()
+{   int un,count=0;
+char pw[20],c;
+int index=0;
+printf("\n\t\t\tWELCOME TO employee LOGIN\t");
+     printf("\n\t\tEnter employeeID:\t");
+     scanf("%d",&un);
+     printf("\n\t\tEnter pin:\t");
+             while((c = getch()) != 6){
+       if(index < 0)
+           index = 0;
+
+       if(c == 8){
+           putch('\b');
+           putch(NULL);
+           putch('\b');
+           index--;
+       continue;
+       }
+       pw[index++] = c;
+       putch('*');
+   }
+   pw[index] = '\0';
+   // scanf("%s",pw);
+    FILE *fp;
+
+        fp=fopen("credit.dat","r");
+       while(fscanf(fp,"%d %s %s %d %d %d\n",&s1.employeeid,s1.pin,s1.name,&s1.acno,&s1.income,&s1.pincode)!=EOF)
+        {
+        if(s1.employeeid==un)
+        {
+            if(strcmp(s1.pin,pw)==0)
+            {
+                FILE *us;
+                us=fopen("employeename.dat","w");
+                fprintf(us,"%d\n",s1.employeeid);
+                fclose(us);
+            count=1;
+            break;
+        }}
+        }
+        if(count==1)
+        {
+                        printf("\n\t\t\tLOGIN SUCCESSFUL!\t\t");
+                        employee();
+
+
+        }
+        if(count==0)
+        {
+            printf("\n\t\t\tINVALID employeeNAME OR pin!\t");
+            login();
+        }
+
+}
